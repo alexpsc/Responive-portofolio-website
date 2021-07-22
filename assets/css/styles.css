@@ -1,5 +1,6 @@
 /*==================== GOOGLE FONTS ====================*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap");
 
 /*==================== VARIABLES CSS ====================*/
 :root {
@@ -7,7 +8,7 @@
 
   /*========== Colors ==========*/
   /* Change favorite color */
-  --hue-color: 250; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+  --hue-color: 220; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
 
   /* HSL color mode */
   --first-color: hsl(var(--hue-color), 69%, 61%);
@@ -25,6 +26,7 @@
 
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
+  --logo-font: "Poppins", sans-serif;
 
   /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
   --big-font-size: 2rem;
@@ -178,10 +180,22 @@ img {
   justify-content: space-between;
   align-items: center;
 }
-.nav__logo,
+
 .nav__toggle {
   color: var(--title-color);
-  font-weight: var(--font-medium);
+  font-weight: var(--font-semi-bold);
+}
+
+.nav__logo {
+  color: var(--title-color);
+  font-size: var(--h1-font-size);
+  font-family: var(--logo-font);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.nav__logo .logo__bold {
+  color: var(--first-color);
 }
 
 .nav__logo:hover {
@@ -286,7 +300,7 @@ img {
 }
 
 .home__blob {
-  width: 200px;
+  width: 300px;
   fill: var(--first-color);
 }
 
@@ -317,7 +331,7 @@ img {
   display: none;
 }
 
-.home__scroll-buton {
+.home__scroll-button {
   color: var(--first-color);
   transition: 0.3s;
 }
@@ -393,6 +407,7 @@ img {
 }
 
 /*==================== ABOUT ====================*/
+
 .about__img {
   width: 200px;
   border-radius: 0.5rem;
@@ -515,16 +530,16 @@ img {
   width: 20%;
 }
 
-.skills__figma {
-  width: 40%;
+.skills__mongo {
+  width: 15%;
 }
 
-.skills__sketch {
-  width: 40%;
+.skills__express {
+  width: 30%;
 }
 
-.skills__photoshop {
-  width: 60%;
+.skills__node {
+  width: 50%;
 }
 
 .skills__close .skills__list {
@@ -1127,7 +1142,7 @@ img {
     column-gap: 2rem;
   }
   .home__blob {
-    width: 270px;
+    width: 320px;
   }
   .home__scroll {
     display: block;
@@ -1225,7 +1240,7 @@ img {
     padding: 0;
   }
   .home__blob {
-    width: 320px;
+    width: 420px;
   }
   .home__social {
     transform: translateX(-6rem);
