@@ -1,3 +1,5 @@
+// const { json } = require("stream/consumers");
+
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = document.getElementById("nav-menu"),
   navToggle = document.getElementById("nav-toggle"),
@@ -90,39 +92,6 @@ modalCloses.forEach((modalClose) => {
   });
 });
 
-/*==================== PORTFOLIO SWIPER  ====================*/
-let swiperPortofolio = new Swiper(".portofolio__container", {
-  cssMode: true,
-  loop: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  mousewheel: true,
-  keyboard: true,
-});
-/*==================== TESTIMONIAL ====================*/
-let swiperTestimonial = new Swiper(".testimonial__container", {
-  loop: true,
-  grabCursor: true,
-  spaceBetween: 48,
-
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    dynamicBullets: true,
-  },
-  breakpoints: {
-    568: {
-      slidesPerView: 2,
-    },
-  },
-});
-
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 
 const sections = document.querySelectorAll("section[id]");
@@ -201,4 +170,61 @@ themeButton.addEventListener("click", () => {
   // We save the theme and the current icon that the user chose
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
+});
+
+//contact form
+const contactForm = document.querySelector(".contact__form");
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let subject = document.getElementById("subject");
+let message = document.getElementById("message");
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let formData = {
+    name: name.value,
+    email: email.value,
+    subject: subject.value,
+    message: message.value,
+  };
+
+  // fetch("/", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-type": "application/json",
+  //   },
+  //   body: JSON.stringify(formData),
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //   })
+  //   .catch();
+
+  const confirmationMessage = document.getElementById("confirmation");
+
+  function displayConfirmationMsg(message) {
+    confirmationMessage.innerText = message;
+    setTimeout(() => {
+      confirmationMessage.innerText = "";
+    }, 3000);
+  }
+  confirmationMessage.innerText = "sending...";
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "/", true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.onload = function () {
+    // console.log(xhr.responseText);
+    if (xhr.responseText == "succes") {
+      displayConfirmationMsg("Message sent!");
+      name.value = "";
+      email.value = "";
+      subject.value = "";
+      message.value = "";
+    } else {
+      displayConfirmationMsg("something went wrong");
+    }
+  };
+  xhr.send(JSON.stringify(formData));
 });

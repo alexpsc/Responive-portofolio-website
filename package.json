@@ -1,0 +1,27 @@
+{
+  "name": "responsive-portfolio-website",
+  "version": "1.0.0",
+  "description": "portofolio website",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexpsc/Responive-portofolio-website.git"
+  },
+  "author": "Alex Pascu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexpsc/Responive-portofolio-website/issues"
+  },
+  "homepage": "https://github.com/alexpsc/Responive-portofolio-website#readme"
+}
